@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://h28ywpxj84si"]
+
+[ext_resource type="Script" uid="uid://dlblscyd8l0ng" path="res://01_scenes/game_scene.gd" id="1_wrxcv"]
+[ext_resource type="PackedScene" uid="uid://dtduxpcl6wchs" path="res://01_scenes/paddle/paddle.tscn" id="2_yjcn7"]
+[ext_resource type="PackedScene" uid="uid://bo7ulc3glyv6b" path="res://01_scenes/ball/ball.tscn" id="3_s3kqc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s3kqc"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nxncf"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yjcn7"]
+normal = Vector2(0, 1)
+
+[node name="Main" type="Node"]
+
+[node name="GameScene" type="Node2D" parent="."]
+script = ExtResource("1_wrxcv")
+
+[node name="Paddle" parent="GameScene" instance=ExtResource("2_yjcn7")]
+unique_name_in_owner = true
+
+[node name="LevelBounds" type="StaticBody2D" parent="GameScene"]
+
+[node name="LeftBounds" type="CollisionShape2D" parent="GameScene/LevelBounds"]
+unique_name_in_owner = true
+shape = SubResource("WorldBoundaryShape2D_s3kqc")
+
+[node name="RightBounds" type="CollisionShape2D" parent="GameScene/LevelBounds"]
+unique_name_in_owner = true
+shape = SubResource("WorldBoundaryShape2D_nxncf")
+
+[node name="TopBounds" type="CollisionShape2D" parent="GameScene/LevelBounds"]
+unique_name_in_owner = true
+shape = SubResource("WorldBoundaryShape2D_yjcn7")
+
+[node name="Ball" parent="." instance=ExtResource("3_s3kqc")]
+position = Vector2(609, 330)
+motion_mode = 1
