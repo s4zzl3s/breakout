@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://7bg8efw1ybcr" path="res://01_scenes/paddle/paddle.gd" id="1_u4nfj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjcn7"]
-size = Vector2(125, 20)
+size = Vector2(150, 20)
 
-[node name="Paddle" type="CharacterBody2D"]
+[node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
+wall_min_slide_angle = 0.0
+floor_snap_length = 0.0
+platform_on_leave = 2
 script = ExtResource("1_u4nfj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

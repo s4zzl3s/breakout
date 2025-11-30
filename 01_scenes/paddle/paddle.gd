@@ -7,15 +7,17 @@ const SPEED = 300.0
 
 
 func _physics_process(delta: float) -> void:
-	
-	var move_vector: Vector2 = Vector2.ZERO
 	var direction := Input.get_axis("left", "right")
 	if direction:
-		move_vector.x = direction * SPEED * delta
+		velocity.x = direction * SPEED * delta
 	else:
-		move_vector.x = 0
+		velocity.x = 0
 
-	move_and_collide(move_vector)
+	move_and_collide(velocity)
 	
-func get_paddle_normal() -> Vector2: 
-	return Vector2.UP
+func get_paddle_normal(col_pos: Vector2) -> Vector2:
+	var col_distance = col_pos - global_position
+	var r = col_distance.x / (col.shape.size.x / 2)
+	r = clamp(r, -1, 1)
+	print(r)
+	return Vector2.UP.rotated(deg_to_rad(45 * r))
