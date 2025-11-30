@@ -35,6 +35,8 @@ shape = SubResource("WorldBoundaryShape2D_nxncf")
 unique_name_in_owner = true
 shape = SubResource("WorldBoundaryShape2D_yjcn7")
 
-[node name="Ball" parent="." instance=ExtResource("3_s3kqc")]
+[node name="Ball" parent="." node_paths=PackedStringArray("paddle") instance=ExtResource("3_s3kqc")]
 position = Vector2(609, 330)
 motion_mode = 1
+speed = 150.0
+paddle = NodePath("../GameScene/Paddle")

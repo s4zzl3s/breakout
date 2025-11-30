@@ -15,9 +15,3 @@ func _physics_process(delta: float) -> void:
 
 	move_and_collide(velocity)
 	
-func get_paddle_normal(col_pos: Vector2) -> Vector2:
-	var col_distance = col_pos - global_position
-	var r = col_distance.x / (col.shape.size.x / 2)
-	r = clamp(r, -1, 1)
-	print(r)
-	return Vector2.UP.rotated(deg_to_rad(45 * r))
