@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://h28ywpxj84si"]
+[gd_scene load_steps=9 format=3 uid="uid://h28ywpxj84si"]
 
 [ext_resource type="Script" uid="uid://dlblscyd8l0ng" path="res://01_scenes/game_scene.gd" id="1_wrxcv"]
 [ext_resource type="PackedScene" uid="uid://dtduxpcl6wchs" path="res://01_scenes/paddle/paddle.tscn" id="2_yjcn7"]
-[ext_resource type="PackedScene" uid="uid://bo7ulc3glyv6b" path="res://01_scenes/ball/ball.tscn" id="3_s3kqc"]
+[ext_resource type="PackedScene" uid="uid://cvefjomklulwm" path="res://01_scenes/blockgrid/block_grid.tscn" id="3_nxncf"]
+[ext_resource type="Script" uid="uid://bujlk80my7m7t" path="res://01_scenes/death_area.gd" id="4_i6cd3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s3kqc"]
 normal = Vector2(1, 0)
@@ -13,10 +14,13 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yjcn7"]
 normal = Vector2(0, 1)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e88wo"]
+
 [node name="Main" type="Node"]
 
-[node name="GameScene" type="Node2D" parent="."]
+[node name="GameScene" type="Node2D" parent="." node_paths=PackedStringArray("block_grid")]
 script = ExtResource("1_wrxcv")
+block_grid = NodePath("BlockGrid")
 
 [node name="Paddle" parent="GameScene" instance=ExtResource("2_yjcn7")]
 unique_name_in_owner = true
@@ -35,8 +39,13 @@ shape = SubResource("WorldBoundaryShape2D_nxncf")
 unique_name_in_owner = true
 shape = SubResource("WorldBoundaryShape2D_yjcn7")
 
-[node name="Ball" parent="." node_paths=PackedStringArray("paddle") instance=ExtResource("3_s3kqc")]
-position = Vector2(609, 330)
-motion_mode = 1
-speed = 150.0
-paddle = NodePath("../GameScene/Paddle")
+[node name="BlockGrid" parent="GameScene" instance=ExtResource("3_nxncf")]
+
+[node name="DeathArea" type="Area2D" parent="GameScene"]
+position = Vector2(0, 681)
+script = ExtResource("4_i6cd3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameScene/DeathArea"]
+shape = SubResource("WorldBoundaryShape2D_e88wo")
+
+[connection signal="body_entered" from="GameScene/DeathArea" to="GameScene/DeathArea" method="_on_body_entered"]

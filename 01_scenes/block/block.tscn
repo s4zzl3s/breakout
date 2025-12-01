@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7547yf7316p8"]
+
+[ext_resource type="Script" uid="uid://cm57pb7n0d10c" path="res://01_scenes/block/block.gd" id="1_f0ib8"]
+[ext_resource type="PackedScene" uid="uid://doe170kk5bwnw" path="res://01_scenes/items/item.tscn" id="2_kg5aa"]
+[ext_resource type="PackedScene" uid="uid://cfbfcblpdnle7" path="res://01_scenes/items/paddle_extender/paddle_extender.tscn" id="3_m5fu5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ib8"]
+size = Vector2(120, 40)
+
+[node name="Block" type="StaticBody2D" node_paths=PackedStringArray("block_col") groups=["Block"]]
+script = ExtResource("1_f0ib8")
+block_col = NodePath("CollisionShape2D")
+item_array = [ExtResource("2_kg5aa"), ExtResource("3_m5fu5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f0ib8")
+debug_color = Color(0.9329761, 2.4931729e-05, 0.64859504, 0.41960785)

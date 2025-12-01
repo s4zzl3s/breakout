@@ -1,15 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtduxpcl6wchs"]
+[gd_scene load_steps=4 format=3 uid="uid://dtduxpcl6wchs"]
 
 [ext_resource type="Script" uid="uid://7bg8efw1ybcr" path="res://01_scenes/paddle/paddle.gd" id="1_u4nfj"]
+[ext_resource type="PackedScene" uid="uid://bo7ulc3glyv6b" path="res://01_scenes/ball/ball.tscn" id="2_6u57v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjcn7"]
-size = Vector2(150, 20)
+size = Vector2(180, 25)
 
 [node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
 wall_min_slide_angle = 0.0
 floor_snap_length = 0.0
 platform_on_leave = 2
 script = ExtResource("1_u4nfj")
+ball_scene = ExtResource("2_6u57v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true

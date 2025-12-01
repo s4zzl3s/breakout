@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://dhm20qbtgvse1" path="res://01_scenes/ball/ball.gd" id="1_sf6im"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sf6im"]
+radius = 15.0
 
 [node name="Ball" type="CharacterBody2D" node_paths=PackedStringArray("col")]
 wall_min_slide_angle = 0.0
 floor_snap_length = 0.0
 platform_on_leave = 2
 script = ExtResource("1_sf6im")
-speed = 175.0
 col = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

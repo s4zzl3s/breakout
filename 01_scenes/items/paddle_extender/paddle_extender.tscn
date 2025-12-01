@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfbfcblpdnle7"]
+
+[ext_resource type="Script" uid="uid://1kmxm3lqt044" path="res://01_scenes/items/item.gd" id="1_tjlnf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w2m0h"]
+radius = 15.0
+
+[node name="PaddleExtender" type="Area2D"]
+script = ExtResource("1_tjlnf")
+metadata/_custom_type_script = "uid://1kmxm3lqt044"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w2m0h")
+debug_color = Color(0, 0.6323773, 0.45557624, 0.41960785)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvefjomklulwm"]
+
+[ext_resource type="Script" uid="uid://c4fbopshhmo80" path="res://01_scenes/blockgrid/block_grid.gd" id="1_tgksa"]
+[ext_resource type="PackedScene" uid="uid://c7547yf7316p8" path="res://01_scenes/block/block.tscn" id="2_h4mrg"]
+
+[node name="BlockGrid" type="Node2D"]
+script = ExtResource("1_tgksa")
+block_scene = ExtResource("2_h4mrg")
+h_size = 6
+v_size = 5
